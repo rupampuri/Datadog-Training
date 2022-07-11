@@ -219,6 +219,51 @@ Agent (v7.37.1)
 ```
 
 
+### apache httpd server setup and host webapp in Vm 
+
+<img src="httpd.png">
+
+### setup 
+
+```
+ yum  install httpd  git -y
+ 
+ git clone  https://github.com/microsoft/project-html-website.git
+ 
+ [root@ashu-vm ~]# ls
+ddagent-install.log  project-html-website  setup.sh
+[root@ashu-vm ~]# 
+[root@ashu-vm ~]# cp -rfv  project-html-website/*  /var/www/html/
+```
+
+
+### start webapp server 
+
+```
+[root@ashu-vm ~]# systemctl start  httpd
+[root@ashu-vm ~]# systemctl status   httpd
+● httpd.service - The Apache HTTP Server
+   Loaded: loaded (/usr/lib/systemd/system/httpd.service; disabled; vendor preset: disabled)
+   Active: active (running) since Mon 2022-07-11 08:25:23 UTC; 5s ago
+     Docs: man:httpd.service(8)
+ Main PID: 22716 (httpd)
+   Status: "Processing requests..."
+   CGroup: /system.slice/httpd.service
+           ├─22716 /usr/sbin/httpd -DFOREGROUND
+           ├─22717 /usr/sbin/httpd -DFOREGROUND
+           ├─22719 /usr/sbin/httpd -DFOREGROUND
+           ├─22728 /usr/sbin/httpd -DFOREGROUND
+           ├─22741 /usr/sbin/httpd -DFOREGROUND
+           └─22743 /usr/sbin/httpd -DFOREGROUND
+
+Jul 11 08:25:23 ashu-vm systemd[1]: Starting The Apache HTTP Server...
+Jul 11 08:25:23 ashu-vm httpd[22716]: AH00558: httpd: Could not reliably determine the server's fully qualifie...ssage
+Jul 11 08:25:23 ashu-vm systemd[1]: Started The Apache HTTP Server.
+Hint: Some lines were ellipsized, use -l to show in full.
+[root@ashu-vm ~]# systemctl enable httpd
+Created symlink from /etc/systemd/system/multi-user.target.wants/httpd.service to /usr/lib/systemd/system/httpd.service.
+
+```
 
 
 
