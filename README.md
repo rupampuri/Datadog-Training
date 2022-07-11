@@ -278,6 +278,21 @@ access_log  error_log
 103.59.75.244 - - [11/
 ```
 
+## apache httpd with datadogagent 
+
+### httpd server configuration detials 
+
+```
+[root@ashu-vm httpd]# cd  /etc/httpd/
+[root@ashu-vm httpd]# ls
+conf  conf.d  conf.modules.d  logs  modules  run  state
+[root@ashu-vm httpd]# cd  conf
+[root@ashu-vm conf]# ls
+httpd.conf  magic
+[root@ashu-vm conf]# cd ../conf.d/
+[root@ashu-vm conf.d]# ls
+README  autoindex.conf  userdir.conf  welcome.conf
+```
 
 
 
