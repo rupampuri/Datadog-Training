@@ -265,5 +265,19 @@ Created symlink from /etc/systemd/system/multi-user.target.wants/httpd.service t
 
 ```
 
+### logs by apache httpd only 
+
+```
+[root@ashu-vm ~]# cd  /var/log/httpd/
+[root@ashu-vm httpd]# 
+[root@ashu-vm httpd]# ls
+access_log  error_log
+[root@ashu-vm httpd]# tail -f  access_log 
+::1 - - [11/Jul/2022:08:27:08 +0000] "OPTIONS * HTTP/1.0" 200 - "-" "Apache/2.4.53 () (internal dummy connection)"
+::1 - - [11/Jul/2022:08:27:10 +0000] "OPTIONS * HTTP/1.0" 200 - "-" "Apache/2.4.53 () (internal dummy connection)"
+103.59.75.244 - - [11/
+```
+
+
 
 
