@@ -152,6 +152,71 @@ compliance.d  datadog.yaml.example  security-agent.yaml.example
 
 ```
 
+### Understanding telemetry 
+
+<img src="tel.png">
+
+### Understanding StatsD 
+
+<img src="statsd.png">
+
+### agent understanding 
+
+<img src="agg.png">
+
+### checking more 
+
+```
+[root@ashu-vm datadog-agent]# datadog-agent  status 
+Getting the status from the agent.
+
+===============
+Agent (v7.37.1)
+===============
+
+  Status date: 2022-07-11 07:28:43.932 UTC (1657524523932)
+  Agent start: 2022-07-11 06:39:39.16 UTC (1657521579160)
+  Pid: 2142
+  Go Version: go1.17.11
+  Python Version: 3.8.11
+  Build arch: amd64
+  Agent flavor: agent
+  Check Runners: 4
+  Log Level: info
+
+
+```
+
+### now time for enable the process monitoring 
+
+```
+[root@ashu-vm datadog-agent]# 
+[root@ashu-vm datadog-agent]# grep -in  process_config   datadog.yaml  
+1147:## @param process_config - custom object - optional
+1152:# process_config:
+1170:  ## @env DD_PROCESS_CONFIG_ENABLED - string - optional - default: "false"
+1179:  ## @env DD_PROCESS_CONFIG_EXPVAR_PORT - string - optional - default: 6062
+1190:  ## @env DD_PROCESS_CONFIG_LOG_FILE - string - optional
+1196:  ## @env DD_PROCESS_CONFIG_INTERVALS_CONTAINER - integer - optional - default: 10
+
+```
+
+### after making indented changes you restart service 
+
+<img src="process.png">
+
+
+
+```
+[root@ashu-vm datadog-agent]# systemctl restart  datadog-agent
+[root@ashu-vm datadog-agent]# systemctl status   datadog-agent
+● datadog-agent.service - Datadog Agent
+   Loaded: loaded (/usr/lib/systemd/system/datadog-agent.service; enabled; vendor preset: disabled)
+   Active: active (running) since Mon 2022-07-11 08:06:27 UTC; 9s ago
+ Main PID: 18903 (agent)
+   CGroup: /system.slice/datadog-agent.service
+           └─18903 /opt/datadog-agent/bin/agent/agent run -p /opt/datadog-agent/run/agent.pid
+```
 
 
 
