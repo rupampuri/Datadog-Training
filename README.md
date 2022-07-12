@@ -301,3 +301,65 @@ instances:
 docker run -d --name dd-agent -v /var/run/docker.sock:/var/run/docker.sock:ro -v /proc/:/host/proc/:ro -v /sys/fs/cgroup/:/host/sys/fs/cgroup:ro -e DD_API_KEY=""-e DD_SITE="datadoghq.com" gcr.io/datadoghq/agent:7
 ```
 
+### creating sample app in containers
+
+```
+[root@ashu-vm ~]# whoami
+root
+[root@ashu-vm ~]# mkdir  ashuapp
+[root@ashu-vm ~]# cd  ashuapp/
+[root@ashu-vm ashuapp]# ls
+[root@ashu-vm ashuapp]# git clone https://github.com/schoolofdevops/html-sample-app.git
+Cloning into 'html-sample-app'...
+remote: Enumerating objects: 74, done.
+remote: Total 74 (delta 0), reused 0 (delta 0), pack-reused 74
+Receiving objects: 100% (74/74), 1.38 MiB | 32.88 MiB/s, done.
+Resolving deltas: 100% (5/5), done.
+[root@ashu-vm ashuapp]# ls
+html-sample-app
+[root@ashu-vm ashuapp]# vim Dockerfile
+[root@ashu-vm ashuapp]# vim Dockerfile 
+[root@ashu-vm ashuapp]# ls
+Dockerfile  html-sample-app
+[root@ashu-vm ashuapp]# 
+
+
+```
+### Dockerfile 
+
+```
+[root@ashu-vm ashuapp]# cat Dockerfile 
+From nginx
+COPY html-sample-app  /usr/share/nginx/html/
+```
+
+### build image and create container 
+
+```
+[root@ashu-vm ashuapp]# ls
+Dockerfile  html-sample-app
+[root@ashu-vm ashuapp]# docker build -t  ashuapp:v1  . 
+Sending build context to Docker daemon  3.629MB
+Step 1/2 : From nginx
+latest: Pulling from library/nginx
+461246efe0a7: Pull complete 
+a96aaf9a9ec3: Pull complete 
+650d8b758441: Pull complete 
+b138da793ac8: Pull complete 
+bb1705539683: Pull complete 
+b9ed43dcc388: Pull complete 
+Digest: sha256:728f60fda76b3750259ff588f3c1fce07a59eaf6e08713f1441de50e91d221e8
+Status: Downloaded newer image for nginx:latest
+ ---> 41b0e86104ba
+Step 2/2 : COPY html-sample-app  /usr/share/nginx/html/
+ ---> a4b87dff5d28
+Successfully built a4b87dff5d28
+Successfully tagged ashuapp:v1
+[root@ashu-vm ashuapp]# docker images
+REPOSITORY               TAG       IMAGE ID       CREATED         SIZE
+ashuapp                  v1        a4b87dff5d28   5 seconds ago   145MB
+nginx                    latest    41b0e86104ba   4 hours ago     142MB
+gcr.io/datadoghq/agent   7         3d0b4a24e8bc   2 weeks ago     965MB
+```
+
+
