@@ -219,6 +219,12 @@ logs:
     sourcecategory: http_web_error
 ```
 
+### configure log permissions
+
+```
+chmod 655 /var/log/httpd -R 
+```
+
 ### restart agent 
 
 ```
