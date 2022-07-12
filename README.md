@@ -140,5 +140,64 @@ httpd.conf  httpd.conf.backup  magic
 
 
 ```
+### adding in httpd.conf 
+
+```
+LoadModule status_module modules/mod_status.so
+<Location /server-status>
+        SetHandler server-status
+        Order Deny,Allow
+        Deny from all
+        Allow from 127.0.0.1
+</Location>
+ExtendedStatus On
+```
+
+===
+
+```
+
+ httpd  -t
+AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using fe80::874:dff:fe72:8d7%eth0. Set the 'ServerName' directive globally to suppress this message
+Syntax OK
+```
+====
+
+```
+[root@ashu-vm conf]# systemctl restart httpd 
+[root@ashu-vm conf]# systemctl status  httpd 
+● httpd.service - The Apache HTTP Server
+   Loaded: loaded (/usr/lib/systemd/system/httpd.service; enabled; vendor preset: disabled)
+   Active: active (running) since Tue 2022-07-12 06:12:57 UTC; 5s ago
+     Docs: man:httpd.service(8)
+
+```
+
+
+### to verify mod-status 
+
+```
+[root@ashu-vm conf]# curl http://localhost/server-status 
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html><head>
+<title>Apache Status</title>
+</head><body>
+<h1>Apache Server Status for localhost (via 127.0.0.1)</h1>
+
+<dl><dt>Server Version: Apache/2.4.53 ()</dt>
+<dt>Server MPM: prefork</dt>
+<dt>Server Built: Apr 12 2022 12:00:44
+</dt></dl><hr /><dl>
+<dt>Current Time: Tuesday, 12-Jul-2022 06:13:56 UTC</dt>
+<dt>Restart Time: Tuesday, 12-Jul-2022 06:12:57 UTC</dt>
+<dt>Parent Server Config. Generation: 1</dt>
+<dt>Parent Server MPM Generation: 0</dt>
+<dt>Server uptime:  59 seconds</dt>
+<dt>Server load: 0.16 0.08 0.03</dt>
+<dt>Total accesses: 4 - Total Traffic: 4 kB - Total Duration: 2</dt>
+<dt>CPU Usage: u.04 s.02 cu0 cs0 - .
+```
+
+
 
 
