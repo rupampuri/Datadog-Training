@@ -69,7 +69,7 @@ logout
 ### by script we are installing datadog agent v7 
 
 ```
-[root@ashu-vm ~]# DD_AGENT_MAJOR_VERSION=7 DD_API_KEY=8b7fcbeb66ba4b15ffee91697921f15d DD_SITE="datadoghq.com" bash -c "$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script.sh)"
+[root@ashu-vm ~]# DD_AGENT_MAJOR_VERSION=7 DD_API_KEY="" DD_SITE="datadoghq.com" bash -c "$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script.sh)"
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
 100 29326  100 29326    0     0   793k      0 --:--:-- --:--:-- --:--:--  818k
