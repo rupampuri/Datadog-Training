@@ -198,6 +198,33 @@ Syntax OK
 <dt>CPU Usage: u.04 s.02 cu0 cs0 - .
 ```
 
+## changing in datadog agent 
+### you can follow integratiion tab 
+
+```
+/etc/datadog/conf.d/apache.d/conf.yaml 
+## in very last of line add this 
+logs:
+  - type: file
+    path: /var/log/httpd/access_log
+    source: apache
+    service: httpd
+    sourcecategory: http_web_access
+
+ 
+  - type: file
+    path: /var/log/httpd/error_log
+    source: apache
+    service: httpd
+    sourcecategory: http_web_error
+```
+
+### restart agent 
+
+```
+124  systemctl restart datadog-agent
+  125  systemctl status  datadog-agent
+```
 
 
 
