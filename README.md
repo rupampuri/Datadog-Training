@@ -362,4 +362,14 @@ nginx                    latest    41b0e86104ba   4 hours ago     142MB
 gcr.io/datadoghq/agent   7         3d0b4a24e8bc   2 weeks ago     965MB
 ```
 
+### container creating 
+
+```
+[root@ashu-vm ashuapp]# docker run -tid --name ashuc1  -p 1122:80  ashuapp:v1  
+21da87118bd1111f1c50353b1e0bc23477442a60487d2f91f1246b48bbd62e2f
+[root@ashu-vm ashuapp]# docker  ps
+CONTAINER ID   IMAGE                      COMMAND                  CREATED         STATUS                 PORTS                                   NAMES
+21da87118bd1   ashuapp:v1                 "/docker-entrypoint.…"   2 seconds ago   Up 1 second            0.0.0.0:1122->80/tcp, :::1122->80/tcp   ashuc1
+```
+
 
