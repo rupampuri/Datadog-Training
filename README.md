@@ -100,7 +100,45 @@ Jul 12 05:34:10 ashu-vm systemd[1]: Started The Apache HTTP Server.
 Hint: Some lines were ellipsized, use -l to show in full.
 ```
 
+## for integration with apache httpd 
+
+### agent side first 
+
+```
+root@ashu-vm html]# cd  /etc/datadog-agent/
+[root@ashu-vm datadog-agent]# ls
+auth_token    conf.d                install_info                 selinux
+checks.d      datadog.yaml          runtime-security.d           system-probe.yaml.example
+compliance.d  datadog.yaml.example  security-agent.yaml.example
+[root@ashu-vm datadog-agent]# cd  conf.d/
+[root@ashu-vm conf.d]# cd  apache.d/
+[root@ashu-vm apache.d]# pwd
+/etc/datadog-agent/conf.d/apache.d
+[root@ashu-vm apache.d]# ls
+
+cp  conf.yaml.example   conf.yaml
+[root@ashu-vm apache.d]# 
+[root@ashu-vm apache.d]# ls
+auto_conf.yaml  conf.yaml  conf.yaml.example
 
 
+```
+
+### step 2 understanding and changing httpd config 
+
+```
+[root@ashu-vm apache.d]# cd  /etc/httpd/conf
+[root@ashu-vm conf]# ls
+httpd.conf  httpd.conf.backup  magic
+[root@ashu-vm conf]# 
+[root@ashu-vm conf]# 
+[root@ashu-vm conf]# cp  httpd.conf  httpd.conf.backup ^C
+[root@ashu-vm conf]# 
+[root@ashu-vm conf]# ls
+httpd.conf  httpd.conf.backup  magic
+[root@ashu-vm conf]# 
+
+
+```
 
 
