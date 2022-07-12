@@ -233,4 +233,71 @@ chmod 655 /var/log/httpd -R
 ```
 
 
+## datadog with docker engine integration 
+
+### step1 -- setup and install docker on your host 
+
+```
+[root@ashu-vm ~]# yum install docker  -y
+Failed to set locale, defaulting to C
+Loaded plugins: extras_suggestions, langpacks, priorities, update-motd
+amzn2-core                                                                                              | 3.7 kB  00:00:00     
+amzn2extra-docker                                                                                       | 3.0 kB  00:00:00     
+amzn2extra-kernel-5.10                                                                                  | 3.0 kB  00:00:00     
+datadog/signature    
+```
+
+### starting 
+
+```
+[root@ashu-vm ~]# systemctl status docker
+● docker.service - Docker Application Container Engine
+   Loaded: loaded (/usr/lib/systemd/system/docker.service; enabled; vendor preset: disabled)
+   Active: active (running) since Tue 2022-07-12 00:59:36 UTC; 7h ago
+     Docs: https://docs.docker.com
+ Main PID: 4394 (dockerd)
+   CGroup: /system.slice/docker.service
+           └─4394 /usr/bin/dockerd -H fd
+```
+
+### going in agent side 
+
+```
+[root@ashu-vm ~]# cd /etc/datadog-agent/
+[root@ashu-vm datadog-agent]# ls
+auth_token  compliance.d  datadog.yaml          install_info        security-agent.yaml.example  system-probe.yaml.example
+checks.d    conf.d        datadog.yaml.example  runtime-security.d  selinux
+[root@ashu-vm datadog-agent]# cd  conf.d/
+[root@ashu-vm conf.d]# cd  docker.d/
+[root@ashu-vm docker.d]# pwd
+/etc/datadog-agent/conf.d/docker.d
+[root@ashu-vm docker.d]# 
+
+```
+
+### configure datadog as docker user
+
+```
+[root@ashu-vm docker.d]# ls
+conf.yaml.default  docker-daemon.yaml
+[root@ashu-vm docker.d]# 
+[root@ashu-vm docker.d]# cat  docker-daemon.yaml 
+init_config:
+
+instances:
+    - url: "unix://var/run/docker.sock"
+      new_tag_names: true
+[root@ashu-vm docker.d]# vim  docker-daemon.yaml 
+[root@ashu-vm docker.d]# 
+[root@ashu-vm docker.d]# usermod -aG docker  dd-agent  
+[root@ashu-vm docker.d]# systemctl restart datadog-agent
+[root@ashu-vm docker.d]# 
+
+```
+
+### register with docker agent ==
+
+```
+docker run -d --name dd-agent -v /var/run/docker.sock:/var/run/docker.sock:ro -v /proc/:/host/proc/:ro -v /sys/fs/cgroup/:/host/sys/fs/cgroup:ro -e DD_API_KEY=""-e DD_SITE="datadoghq.com" gcr.io/datadoghq/agent:7
+```
 
