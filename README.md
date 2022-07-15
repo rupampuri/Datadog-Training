@@ -65,6 +65,36 @@ kustomizeVersion: v4.5.4
 ```
 
 
+### lets configure to connect 
+
+```
+[root@ashu-vm ~]# whoami
+root
+[root@ashu-vm ~]# pwd
+/root
+[root@ashu-vm ~]# wget  http://172.31.20.255/admin.conf 
+--2022-07-15 07:07:20--  http://172.31.20.255/admin.conf
+Connecting to 172.31.20.255:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 5637 (5.5K) [text/plain]
+Saving to: 'admin.conf'
+
+100%[===============================================================================>] 5,637       --.-K/s   in 0s      
+
+2022-07-15 07:07:20 (484 MB/s) - 'admin.conf' saved [5637/5637]
+
+[root@ashu-vm ~]# ls
+Flaskex  admin.conf  ashuapp  ddagent-install.log  project-html-website  setup.sh  web1
+[root@ashu-vm ~]# 
+[root@ashu-vm ~]# mkdir  ~/.kube 
+[root@ashu-vm ~]# cp -v admin.conf   ~/.kube/config  
+'admin.conf' -> '/root/.kube/config'
+[root@ashu-vm ~]# 
+[root@ashu-vm ~]# kubectl  get nodes
+NAME     STATUS   ROLES           AGE    VERSION
+master   Ready    control-plane   4h9m   v1.24.3
+worker   Ready    <none>          4h8m   v1.24.3
+```
 
 
 
