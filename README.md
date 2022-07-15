@@ -35,6 +35,34 @@ dd-agent
 
 <img src="mt.png">
 
+### datadog with kubernetes 
+
+<img src="k8s.png">
+
+### lets connect with k8s first using kubectl 
+
+```
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+ 	mv  kubectl  /usr/bin/
+  chmod +x  /usr/bin/kubectl 
+```
+### lets connect to k8s server 
+
+```
+kubectl  version --client  -o yaml 
+clientVersion:
+  buildDate: "2022-07-13T14:30:46Z"
+  compiler: gc
+  gitCommit: aef86a93758dc3cb2c658dd9657ab4ad4afc21cb
+  gitTreeState: clean
+  gitVersion: v1.24.3
+  goVersion: go1.18.3
+  major: "1"
+  minor: "24"
+  platform: linux/amd64
+kustomizeVersion: v4.5.4
+
+```
 
 
 
