@@ -31,6 +31,10 @@ dd-agent
 dd-agent
 ```
 
+### metrics explorer 
+
+<img src="mt.png">
+
 
 
 
