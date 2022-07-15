@@ -95,6 +95,20 @@ NAME     STATUS   ROLES           AGE    VERSION
 master   Ready    control-plane   4h9m   v1.24.3
 worker   Ready    <none>          4h8m   v1.24.3
 ```
+### lets deploy it 
+
+```
+[root@ashu-vm ~]# kubectl  apply -f  app.yaml 
+deployment.apps/ashuapp created
+[root@ashu-vm ~]# kubectl  get  deployments 
+NAME      READY   UP-TO-DATE   AVAILABLE   AGE
+ashuapp   0/1     1            0           7s
+[root@ashu-vm ~]# 
+
+
+
+```
+
 
 
 
