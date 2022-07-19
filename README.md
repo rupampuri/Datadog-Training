@@ -55,4 +55,22 @@ Connection to 172.31.20.202 closed.
 [click_here_to_go](https://docs.datadoghq.com/tracing/trace_collection/dd_libraries/php/?tabs=containers#install-the-extension)
 
 
+### adding php based configuration for datadog -- apm  in main server configuration or virtualhost of webapp 
+
+```
+[root@ashu-vm ~]# cd  /etc/httpd/conf
+[root@ashu-vm conf]# ls
+httpd.conf  httpd.conf.backup  magic
+[root@ashu-vm conf]# vim  httpd.conf
+[root@ashu-vm conf]# vim  httpd.conf
+[root@ashu-vm conf]# systemctl restart  httpd
+[root@ashu-vm conf]# 
+
+
+```
+
+### in COnfiguration file below details you will get it from datadog 
+
+<img src="dd.png">
+
 
