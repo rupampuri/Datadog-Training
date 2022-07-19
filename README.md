@@ -50,5 +50,9 @@ Connection to 172.31.20.202 closed by remote host.
 Connection to 172.31.20.202 closed.
 ```
 
+### from datadog dashboard -- we have to choose php and follow the instructions in given link 
+
+[click_here_to_go](https://docs.datadoghq.com/tracing/trace_collection/dd_libraries/php/?tabs=containers#install-the-extension)
+
 
 
