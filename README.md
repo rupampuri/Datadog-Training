@@ -87,4 +87,37 @@ Bye
 
 ```
 
+### Download wordpress framework 
+
+```
+ 313  wget http://wordpress.org/latest.tar.gz 
+  314  ls
+  315  history 
+  316  ls
+  317  tar xvzf latest.tar.gz 
+  318  history 
+[root@vaibhav-vm wordpress]# ls
+latest.tar.gz  wordpress
+[root@vaibhav-vm wordpress]# ls wordpress/
+index.php    wp-activate.php     wp-comments-post.php  wp-cron.php        wp-load.php   wp-settings.php   xmlrpc.php
+license.txt  wp-admin            wp-config-sample.php  wp-includes        wp-login.php  wp-signup.php
+readme.html  wp-blog-header.php  wp-content            wp-links-opml.php  wp-mail.php   wp-trackback.php
+[root@vaibhav-vm wordpress]# 
+[root@vaibhav-vm wordpress]# 
+[root@vaibhav-vm wordpress]# ls
+latest.tar.gz  wordpress
+[root@vaibhav-vm wordpress]# mv  wordpress/*  .
+[root@vaibhav-vm wordpress]# ls
+index.php      wordpress           wp-comments-post.php  wp-includes        wp-mail.php       xmlrpc.php
+latest.tar.gz  wp-activate.php     wp-config-sample.php  wp-links-opml.php  wp-settings.php
+license.txt    wp-admin            wp-content            wp-load.php        wp-signup.php
+readme.html    wp-blog-header.php  wp-cron.php           wp-login.php       wp-trackback.php
+[root@vaibhav-vm wordpress]# rm -rf wordpress  latest.tar.gz 
+[root@vaibhav-vm wordpress]# ls
+index.php    wp-activate.php     wp-comments-post.php  wp-cron.php        wp-load.php   wp-settings.php   xmlrpc.php
+license.txt  wp-admin            wp-config-sample.php  wp-includes        wp-login.php  wp-signup.php
+readme.html  wp-blog-header.php  wp-content            wp-links-opml.php  wp-mail.php   wp-trackback.php
+```
+
+
 
