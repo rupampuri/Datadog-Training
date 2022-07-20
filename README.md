@@ -119,5 +119,21 @@ license.txt  wp-admin            wp-config-sample.php  wp-includes        wp-log
 readme.html  wp-blog-header.php  wp-content            wp-links-opml.php  wp-mail.php   wp-trackback.php
 ```
 
+### enable PHP apm 
+
+```
+rm  -rf datadog-setup.php 
+curl -LO https://github.com/DataDog/dd-trace-php/releases/latest/download/datadog-setup.php
+ php datadog-setup.php --php-bin=all
+ 
+```
+
+### make changes in httpd.conf then 
+
+```
+systemctl restart httpd
+systemctl restart datadog-agent
+datadog-agent status
+```
 
 
