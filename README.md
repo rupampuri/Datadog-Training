@@ -6,5 +6,11 @@
 
 [clickhere](https://codeshare.io/ZJzWbe)
 
+### Understanding traces 
+
+<img src="traces.png">
+
+
+
 
 
