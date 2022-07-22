@@ -14,5 +14,11 @@
 
 [linked](https://in.linkedin.com/in/ashutoshh)
 
+### SYnthetic testing / monitoring 
+
+<img src="syn.png">
+
+
+
 
 
